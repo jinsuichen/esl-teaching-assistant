@@ -1,0 +1,538 @@
+/* Global Resets and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f9; /* Light, neutral background */
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for scrollable content */
+    min-height: 100vh;
+    padding: 20px; /* Add padding for smaller screens */
+}
+
+#root {
+    width: 100%;
+    max-width: 1400px; /* Max width for the app content */
+}
+
+/* App Container */
+.app-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+/* App Header */
+.app-header {
+    margin-bottom: 40px;
+}
+
+.app-header h1 {
+    font-size: 2.8em;
+    color: #2c3e50; /* Dark blue-grey */
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.app-subtitle {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+/* Feature Card */
+.feature-card {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); /* Gradient blue */
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0, 91, 179, 0.2); /* Subtle shadow related to card color */
+}
+
+.feature-card:hover,
+.feature-card:focus-within {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 91, 179, 0.3);
+}
+
+.feature-card-icon {
+    font-size: 2.5em; /* Larger icon */
+    margin-bottom: 15px;
+    align-self: flex-start; /* Icon to the start */
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.feature-card-title {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.feature-card-description {
+    font-size: 0.95em;
+    opacity: 0.9;
+    flex-grow: 1; /* Allows description to take available space */
+}
+
+/* Styles for disabled/placeholder feature cards */
+.feature-card[aria-disabled="true"] {
+    background: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 100%); /* Grey gradient */
+    color: #757575; /* Muted text color */
+    cursor: not-allowed;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+
+.feature-card[aria-disabled="true"] .feature-card-icon {
+    background-color: rgba(100, 100, 100, 0.1); /* Darker, semi-transparent background for icon */
+    opacity: 0.6; /* Make icon less prominent */
+}
+
+.feature-card[aria-disabled="true"]:hover,
+.feature-card[aria-disabled="true"]:focus-within {
+    transform: none; /* No transform on hover/focus */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Keep shadow static */
+}
+
+
+/* App Footer */
+.app-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Accessibility */
+.feature-card:focus {
+    outline: 3px solid #0056b3; /* Stronger focus outline */
+    outline-offset: 2px;
+}
+
+.feature-card[aria-disabled="true"]:focus {
+    outline: 3px solid #888; /* Muted focus outline for disabled cards */
+}
+
+
+/* sr-only for visually hidden accessible text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+/* Topic Generator Page Styles */
+.topic-generator-page {
+    text-align: left;
+    padding: 20px;
+}
+
+.topic-generator-page .page-title {
+    font-size: 2.2em;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.back-button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.2s ease;
+    margin-bottom: 25px;
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+}
+
+.back-button:hover, .back-button:focus {
+    background-color: #545b62;
+    outline: 2px solid #3b4045;
+    outline-offset: 1px;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    align-items: center; /* Vertically align items */
+    flex-wrap: wrap; /* Allow wrapping if not enough space */
+}
+
+.input-area input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1em;
+    min-width: 200px; /* Minimum width before wrapping */
+}
+.input-area input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    outline: none;
+}
+
+.input-area button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px; /* Match input padding for height */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.input-area button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+.input-area button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.suggestions-area {
+    margin-top: 0; /* Adjusted as it's now after input-area */
+    margin-bottom: 30px; /* Space before generated topics */
+    padding-top: 0; /* No longer needs top border/padding if directly after input */
+    /* border-top: 1px solid #e0e0e0; Removed, or adjust if visual separation needed */
+}
+
+.suggestions-header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between title and icon */
+    margin-bottom: 15px; 
+}
+
+.suggestions-area h3 {
+    color: #343a40;
+    text-align: left;
+    margin-bottom: 0; /* Margin now handled by suggestions-header */
+    font-size: 1.3em;
+}
+
+.keywords-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: flex-start; /* Align chips to the left */
+}
+
+.keyword-chip {
+    background-color: #6c757d; /* Bootstrap secondary color */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.keyword-chip:hover, .keyword-chip:focus {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+    outline: 2px solid #494f54;
+    outline-offset: 1px;
+}
+.keyword-chip[aria-selected="true"] {
+    background-color: #0056b3; /* Darker blue for selected */
+    font-weight: bold;
+}
+
+.refresh-suggestions-button {
+    background-color: transparent;
+    color: #007bff;
+    border: none;
+    padding: 5px; /* Small padding for click area */
+    border-radius: 50%; /* Circular */
+    cursor: pointer;
+    font-size: 1.5em; /* Adjust icon size */
+    line-height: 1; /* Ensure icon is vertically centered */
+    transition: color 0.2s ease, transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.refresh-suggestions-button:hover:not(:disabled) {
+    color: #0056b3; /* Darker blue on hover */
+    transform: rotate(60deg); /* Rotation effect on hover */
+}
+
+.refresh-suggestions-button:focus {
+    outline: 2px solid #007bff; /* Focus outline */
+    outline-offset: 2px;
+}
+
+.refresh-suggestions-button:disabled {
+    color: #cccccc; /* Greyed out when disabled */
+    cursor: not-allowed;
+    transform: none; /* No rotation when disabled */
+}
+
+.results-area {
+    margin-top: 20px; /* This is now after suggestions */
+    margin-bottom: 30px;
+    padding: 0px; 
+    border-radius: 8px;
+}
+
+.results-area h3 {
+    margin-bottom: 15px;
+    color: #343a40;
+    font-size: 1.5em;
+}
+
+/* Topic Cards Container */
+.topic-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.topic-card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    font-size: 1.1em;
+    color: #343a40;
+    text-align: left; /* Changed from center */
+    /* Removed: display: flex; align-items: center; justify-content: center; */
+    font-weight: 500; /* Added for better font appearance */
+    min-height: 100px; /* Ensure cards have a decent height */
+}
+
+.topic-card:hover, .topic-card:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    border-color: #007bff;
+    outline: none;
+}
+.topic-card:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.loading-message, .error-message {
+    margin: 15px 0;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    text-align: left;
+}
+
+.loading-message {
+    color: #004085;
+    background-color: #cce5ff;
+    border: 1px solid #b8daff;
+}
+
+.error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure modal is on top */
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 600px; /* Max width of modal */
+    max-height: 90vh; /* Max height */
+    overflow-y: auto; /* Scroll if content overflows */
+    text-align: left;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-title-text {
+    font-size: 1.6em;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.modal-close-button {
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 5px;
+}
+.modal-close-button:hover, .modal-close-button:focus {
+    color: #333;
+    outline: none;
+}
+
+.auxiliary-sentences-list {
+    list-style-type: disc; /* Or 'none' if preferred */
+    padding-left: 25px;
+    margin-top: 10px;
+}
+
+.auxiliary-sentences-list li {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    color: #495057;
+    line-height: 1.5;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .app-header h1 {
+        font-size: 2.2em;
+    }
+    .app-subtitle {
+        font-size: 1em;
+    }
+    .features-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+        gap: 20px;
+    }
+    .app-container {
+        padding: 20px;
+    }
+    .feature-card {
+        padding: 20px;
+    }
+
+    .topic-generator-page .page-title {
+        font-size: 1.8em;
+    }
+
+    .refresh-suggestions-button {
+        font-size: 1.3em; /* Slightly smaller icon on mobile */
+        padding: 4px;
+    }
+    .topic-cards-container {
+        grid-template-columns: 1fr; /* Single column for topic cards */
+    }
+    .modal-content {
+        padding: 20px;
+    }
+    .modal-title-text {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header h1 {
+        font-size: 1.8em;
+    }
+     .feature-card-title {
+        font-size: 1.4em;
+    }
+    .feature-card-description {
+        font-size: 0.9em;
+    }
+    .topic-generator-page .page-title {
+        font-size: 1.6em;
+    }
+    .input-area {
+        flex-direction: column; /* Stack input and button on very small screens */
+        align-items: stretch;
+    }
+    .input-area input[type="text"] {
+        margin-bottom: 10px; 
+    }
+    .input-area button {
+         width: 100%;
+    }
+    .back-button, .input-area button {
+        font-size: 0.9em;
+        padding: 10px 15px;
+    }
+    .topic-card {
+        font-size: 1em;
+        padding: 15px;
+    }
+    .keyword-chip {
+        font-size: 0.85em;
+        padding: 6px 12px;
+    }
+    .refresh-suggestions-button {
+        font-size: 1.2em; /* Even smaller icon on very small screens */
+    }
+    .modal-title-text {
+        font-size: 1.2em;
+    }
+    .auxiliary-sentences-list li {
+        font-size: 1em;
+    }
+}
